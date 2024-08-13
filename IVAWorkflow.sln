@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{24EAF18C-85D0-42D9-99EE-3088DC8D1D77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CameraService", "src\CameraService\CameraService.csproj", "{00C3B585-0194-483B-BA16-6F1661171C07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleManagementService", "src\VehicleManagementService\VehicleManagementService.csproj", "{DC6A8761-3B5D-4AA0-BB65-281DE26B23A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalyticsService", "src\AnalyticsService\AnalyticsService.csproj", "{28D2FB6E-1556-46AB-AD0F-0EADDA782AF2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00C3B585-0194-483B-BA16-6F1661171C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00C3B585-0194-483B-BA16-6F1661171C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00C3B585-0194-483B-BA16-6F1661171C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00C3B585-0194-483B-BA16-6F1661171C07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC6A8761-3B5D-4AA0-BB65-281DE26B23A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC6A8761-3B5D-4AA0-BB65-281DE26B23A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC6A8761-3B5D-4AA0-BB65-281DE26B23A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC6A8761-3B5D-4AA0-BB65-281DE26B23A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28D2FB6E-1556-46AB-AD0F-0EADDA782AF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28D2FB6E-1556-46AB-AD0F-0EADDA782AF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28D2FB6E-1556-46AB-AD0F-0EADDA782AF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28D2FB6E-1556-46AB-AD0F-0EADDA782AF2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{00C3B585-0194-483B-BA16-6F1661171C07} = {24EAF18C-85D0-42D9-99EE-3088DC8D1D77}
+		{DC6A8761-3B5D-4AA0-BB65-281DE26B23A3} = {24EAF18C-85D0-42D9-99EE-3088DC8D1D77}
+		{28D2FB6E-1556-46AB-AD0F-0EADDA782AF2} = {24EAF18C-85D0-42D9-99EE-3088DC8D1D77}
+	EndGlobalSection
+EndGlobal
