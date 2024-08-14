@@ -11,7 +11,7 @@ public class NumberPlateRecognitionService : IAnalytics
         _cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
 
         var random = new Random();
-        while (!cancellationToken.IsCancellationRequested)
+        while (!_cancellationTokenSource.IsCancellationRequested)
         {
             await Task.Delay(random.Next(10000, 30000), cancellationToken);
 

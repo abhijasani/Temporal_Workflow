@@ -52,8 +52,18 @@ public class NumberPlateRecognitionController : ControllerBase
     }
 
     [HttpPost("stop")]
-    public async Task StopNUmberPlatRecognition()
+    public async Task StopNUmberPlatRecognition(string workflowId)
     {
         await _numberPlateRecognitionService.StopAnalytics();
+
+        if(workflowId != null)
+        {
+            WorkflowHandle? handle = _temporalClient?.GetWorkflowHandle(workflowId);
+
+            if(handle != null)
+            {
+                await handle.CancelAsync();
+            }
+        }
     }
 }

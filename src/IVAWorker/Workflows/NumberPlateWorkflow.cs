@@ -21,8 +21,13 @@ public class NumberPlateWorkflow
             (NumberPlateActivities activity)
             => activity.ValidateNumberPlate(numberPlate),
             new ActivityOptions { StartToCloseTimeout = TimeSpan.FromMinutes(5), RetryPolicy = retryPolicy }
-        );
+        );  
 
-        return result;
+        if(result == "true")
+        {
+            return "Send Notification to User";
+        }
+
+        return "Send Notification to Security and Start Recording";
     }
 }
