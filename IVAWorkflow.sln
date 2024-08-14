@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleManagementService", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalyticsService", "src\AnalyticsService\AnalyticsService.csproj", "{28D2FB6E-1556-46AB-AD0F-0EADDA782AF2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IVAWorker", "src\IVAWorker\IVAWorker.csproj", "{69AC326A-4C0B-4987-9FDB-AE2EDC5F1294}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{28D2FB6E-1556-46AB-AD0F-0EADDA782AF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28D2FB6E-1556-46AB-AD0F-0EADDA782AF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28D2FB6E-1556-46AB-AD0F-0EADDA782AF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69AC326A-4C0B-4987-9FDB-AE2EDC5F1294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69AC326A-4C0B-4987-9FDB-AE2EDC5F1294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69AC326A-4C0B-4987-9FDB-AE2EDC5F1294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69AC326A-4C0B-4987-9FDB-AE2EDC5F1294}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,5 +43,6 @@ Global
 		{00C3B585-0194-483B-BA16-6F1661171C07} = {24EAF18C-85D0-42D9-99EE-3088DC8D1D77}
 		{DC6A8761-3B5D-4AA0-BB65-281DE26B23A3} = {24EAF18C-85D0-42D9-99EE-3088DC8D1D77}
 		{28D2FB6E-1556-46AB-AD0F-0EADDA782AF2} = {24EAF18C-85D0-42D9-99EE-3088DC8D1D77}
+		{69AC326A-4C0B-4987-9FDB-AE2EDC5F1294} = {24EAF18C-85D0-42D9-99EE-3088DC8D1D77}
 	EndGlobalSection
 EndGlobal

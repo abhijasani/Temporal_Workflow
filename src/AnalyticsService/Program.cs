@@ -1,4 +1,5 @@
 using AnalyticsService;
+using AnalyticsService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddSwaggerGen();
 
 // Custom Services
 builder.Services.AddSingleton<IVASettingsService>();
+builder.Services.AddSingleton<NumberPlateRecognitionService>();
 
 var app = builder.Build();
 
