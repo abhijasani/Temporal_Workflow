@@ -2,6 +2,7 @@ using AnalyticsService.Services;
 using Microsoft.AspNetCore.Mvc;
 using Temporalio.Client;
 using IVAWorker;
+using Temporalio.Api.Enums.V1;
 
 namespace AnalyticsService.Controllers;
 
@@ -11,19 +12,18 @@ namespace AnalyticsService.Controllers;
 public class NumberPlateRecognitionController : ControllerBase
 {
     private readonly NumberPlateRecognitionService _numberPlateRecognitionService;
-    private TemporalClient? _temporalClient;
+    private TemporalClient _temporalClient;
 
-    public NumberPlateRecognitionController(NumberPlateRecognitionService numberPlateRecognitionService)
+    public NumberPlateRecognitionController(NumberPlateRecognitionService numberPlateRecognitionService,
+        TemporalClientService temporalClientService)
     {
         _numberPlateRecognitionService = numberPlateRecognitionService;
-
+        _temporalClient = temporalClientService.temporalClient;
     }
 
     [HttpGet("start")]
     public async Task<IActionResult> StartNumberPlateRecognition(Guid cameraId, CancellationToken cancellationToken)
     {
-        _temporalClient = await TemporalClient.ConnectAsync(new("localhost:7233"));
-
         var workflowId = $"{nameof(MainWorkflow)}-{Guid.NewGuid()}";
 
         try
@@ -37,11 +37,25 @@ public class NumberPlateRecognitionController : ControllerBase
             {
                 Console.WriteLine($"Detected Number Plate {numberPlate}");
 
-                await handle.SignalAsync(wf => wf.NumberPlateSignal(numberPlate));
+                var workflowDescription = await handle.DescribeAsync();
+
+                if (workflowDescription.Status == WorkflowExecutionStatus.Running)
+                {
+                    // Send the signal
+                    await handle.SignalAsync(wf => wf.NumberPlateSignal(numberPlate));
+                }
+                else
+                {
+                    if (cancellationToken.IsCancellationRequested)
+                    {
+                        return Ok($"Workflow Terminated Successfully");
+                    }
+
+                    return BadRequest($"Workflow is not running. Current status: {workflowDescription.Status}");
+                }
             }
 
             return Ok();
-
         }
         catch (Exception ex)
         {
@@ -52,17 +66,17 @@ public class NumberPlateRecognitionController : ControllerBase
     }
 
     [HttpPost("stop")]
-    public async Task StopNUmberPlatRecognition(string workflowId)
+    public async Task StopNumberPlateRecognition(string workflowId)
     {
         await _numberPlateRecognitionService.StopAnalytics();
 
-        if(workflowId != null)
+        if (workflowId != null)
         {
             WorkflowHandle? handle = _temporalClient?.GetWorkflowHandle(workflowId);
 
-            if(handle != null)
+            if (handle != null)
             {
-                await handle.CancelAsync();
+                await handle.TerminateAsync();
             }
         }
     }

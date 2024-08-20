@@ -13,6 +13,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IVASettingsService>();
 builder.Services.AddSingleton<NumberPlateRecognitionService>();
 
+builder.Services.AddSingleton<TemporalClientService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
