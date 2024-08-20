@@ -1,0 +1,44 @@
+services:
+  analytics-service-api:
+    image: analytics-service-api
+    build:
+      context: .
+      dockerfile: ./src/AnalyticsService/Dockerfile
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${Environment}
+    restart: always
+
+  camera-service-api:
+    image: camera-service-api
+    build:
+      context: .
+      dockerfile: ./src/CameraService/Dockerfile
+    ports:
+      - "5001:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${Environment}
+    restart: always
+
+  iva-worker:
+    image: iva-worker
+    build:
+      context: .
+      dockerfile: ./src/IVAWorker/Dockerfile
+    ports:
+      - "5002:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${Environment}
+    restart: always
+
+  vehicle-management-service-api:
+    image: vehicle-management-service-api
+    build:
+      context: .
+      dockerfile: ./src/VehicleManagementService/Dockerfile
+    ports:
+      - "5003:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${Environment}
+    restart: always
