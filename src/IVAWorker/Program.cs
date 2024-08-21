@@ -2,8 +2,20 @@
 using Temporalio.Worker;
 using IVAWorker;
 using IVAWorker.Workflows;
+using Microsoft.Extensions.Configuration;
 
-var client = await TemporalClient.ConnectAsync(new("localhost:7233"));
+var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
+
+var builder = new ConfigurationBuilder()
+    .SetBasePath(AppContext.BaseDirectory)
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true) // Base settings
+    .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true); // Environment-specific settings
+
+var configuration = builder.Build();
+
+var serviceAddress = configuration["Temporal:ServiceAddress"] ?? "localhost:7233";
+
+var client = await TemporalClient.ConnectAsync(new(serviceAddress));
 
 // Cancellation token to shutdown worker on ctrl+c
 using var tokenSource = new CancellationTokenSource();
@@ -17,7 +29,7 @@ using var worker = new TemporalWorker(
     client, // client
     new TemporalWorkerOptions(taskQueue: "IVA_TASK_QUEUE")
         .AddAllActivities(new LongRunningActivity())
-        .AddAllActivities(new NumberPlateActivities())
+        .AddAllActivities(new NumberPlateActivities(configuration))
         .AddWorkflow<MainWorkflow>()
         .AddWorkflow<NumberPlateWorkflow>()
 );

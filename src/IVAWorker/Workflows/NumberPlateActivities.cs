@@ -1,4 +1,5 @@
 using IVAWorker.Services;
+using Microsoft.Extensions.Configuration;
 using Temporalio.Activities;
 
 namespace IVAWorker.Workflows;
@@ -7,9 +8,9 @@ public class NumberPlateActivities
 {
     private readonly WebAPIService _webAPIService;
 
-    public NumberPlateActivities()
+    public NumberPlateActivities(IConfiguration configuration)
     {
-        _webAPIService = new WebAPIService();
+        _webAPIService = new WebAPIService(configuration);
     }
 
     [Activity]

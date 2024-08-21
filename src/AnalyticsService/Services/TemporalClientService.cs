@@ -4,11 +4,12 @@ namespace AnalyticsService.Services;
 
 public class TemporalClientService
 {
-    public TemporalClient temporalClient {get; set;}
+    public TemporalClient temporalClient { get; set; }
 
-    public TemporalClientService()
+    public TemporalClientService(IConfiguration configuration)
     {
-      //  temporalClient = TemporalClient.ConnectAsync(new("localhost:7233"));
-        temporalClient = TemporalClient.ConnectAsync(new("localhost:7233")).GetAwaiter().GetResult();
+        var serviceAddress = configuration["Temporal:ServiceAddress"] ?? "localhost:7233";
+
+        temporalClient = TemporalClient.ConnectAsync(new(serviceAddress)).GetAwaiter().GetResult();
     }
 }

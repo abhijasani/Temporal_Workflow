@@ -65,7 +65,7 @@ public class NumberPlateRecognitionController : ControllerBase
 
     }
 
-    [HttpPost("stop")]
+    [HttpGet("stop")]
     public async Task StopNumberPlateRecognition(string workflowId)
     {
         await _numberPlateRecognitionService.StopAnalytics();

@@ -1,13 +1,17 @@
+using Microsoft.Extensions.Configuration;
+
 namespace IVAWorker.Services;
 
 public class WebAPIService
 {
-    private const string VehicleManagementServiceUrl = "http://localhost:5048";
+    private readonly string VehicleManagementServiceUrl;
     private readonly HttpClient _httpClient;
 
-    public WebAPIService()
+    public WebAPIService(IConfiguration configuration)
     {
         _httpClient = new HttpClient();
+        VehicleManagementServiceUrl = 
+            configuration["VehicleManagementService:BaseUrl"]  ?? "http://localhost:5048"; 
     }
 
     public async Task<string> ValidateNumberPlateAPICall(string numberPlate)

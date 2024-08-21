@@ -20,5 +20,9 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/publish .
 
+COPY src/IVAWorker/appsettings.json ./
+COPY src/IVAWorker/appsettings.Development.json ./
+COPY src/IVAWorker/appsettings.Docker.json ./
+
 # Set the entry point for the container
 ENTRYPOINT ["dotnet", "IVAWorker.dll"]

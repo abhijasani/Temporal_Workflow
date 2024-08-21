@@ -6,6 +6,9 @@ services:
     image: postgres:${POSTGRESQL_VERSION}
     ports:
       - 5432:5432
+    networks:
+      - iva-workflow-network
+
   temporal:
     depends_on:
       - postgresql
@@ -19,6 +22,9 @@ services:
     image: temporalio/auto-setup:${TEMPORAL_AUTOSETUP_VERSION}
     ports:
       - 7233:7233
+    networks:
+      - iva-workflow-network
+
   temporal-admin-tools:
     depends_on:
       - temporal
@@ -28,6 +34,9 @@ services:
     image: temporalio/admin-tools:${TEMPORAL_AUTOSETUP_VERSION}
     stdin_open: true
     tty: true
+    networks:
+      - iva-workflow-network
+
   temporal-ui:
     depends_on:
       - temporal
@@ -37,3 +46,9 @@ services:
     image: temporalio/ui:${TEMPORAL_UI_VERSION}
     ports:
       - 8080:8080
+    networks:
+      - iva-workflow-network
+
+networks:
+  iva-workflow-network:
+    driver: bridge
