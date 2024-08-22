@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: iva-worker-deployment
 spec:
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
       app: iva-worker
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: iva-worker
-        image: phadkesharanmatrixcomsec/iva-workflow:iva-worker
+        image: phadkesharanmatrixcomsec/iva-workflow:iva-worker-1.0
         ports:
         - containerPort: 8080
         env:

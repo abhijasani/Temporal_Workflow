@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: analytics-service-api
-        image: phadkesharanmatrixcomsec/iva-workflow:analytics-service-api
+        image: phadkesharanmatrixcomsec/iva-workflow:analytics-service-api-1.0
         ports:
         - containerPort: 8080
         env:

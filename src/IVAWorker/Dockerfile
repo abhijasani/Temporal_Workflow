@@ -23,6 +23,7 @@ COPY --from=build /app/publish .
 COPY src/IVAWorker/appsettings.json ./
 COPY src/IVAWorker/appsettings.Development.json ./
 COPY src/IVAWorker/appsettings.Docker.json ./
+COPY src/IVAWorker/appsettings.Production.json ./
 
 # Set the entry point for the container
 ENTRYPOINT ["dotnet", "IVAWorker.dll"]

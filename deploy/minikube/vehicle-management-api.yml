@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: vehicle-management-api
-        image: phadkesharanmatrixcomsec/iva-workflow:vehicle-management-service-api
+        image: phadkesharanmatrixcomsec/iva-workflow:vehicle-management-service-api-1.0
         ports:
         - containerPort: 8080
         env:

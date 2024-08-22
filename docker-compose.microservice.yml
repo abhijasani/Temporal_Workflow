@@ -1,6 +1,6 @@
 services:
   analytics-service-api:
-    image: phadkesharanmatrixcomsec/iva-workflow:analytics-service-api
+    image: phadkesharanmatrixcomsec/iva-workflow:analytics-service-api-1.0
     build:
       context: .
       dockerfile: ./src/AnalyticsService/Dockerfile
@@ -13,7 +13,7 @@ services:
       - iva-workflow-network
 
   camera-service-api:
-    image: phadkesharanmatrixcomsec/iva-workflow:camera-service-api
+    image: phadkesharanmatrixcomsec/iva-workflow:camera-service-api-1.0
     build:
       context: .
       dockerfile: ./src/CameraService/Dockerfile
@@ -26,7 +26,7 @@ services:
       - iva-workflow-network
 
   iva-worker:
-    image: phadkesharanmatrixcomsec/iva-workflow:iva-worker
+    image: phadkesharanmatrixcomsec/iva-workflow:iva-worker-1.0
     build:
       context: .
       dockerfile: ./src/IVAWorker/Dockerfile
@@ -39,7 +39,7 @@ services:
       - iva-workflow-network
 
   vehicle-management-service-api:
-    image: phadkesharanmatrixcomsec/iva-workflow:vehicle-management-service-api
+    image: phadkesharanmatrixcomsec/iva-workflow:vehicle-management-service-api-1.0
     build:
       context: .
       dockerfile: ./src/VehicleManagementService/Dockerfile

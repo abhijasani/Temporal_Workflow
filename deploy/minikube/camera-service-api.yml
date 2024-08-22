@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: camera-service-api
-        image: phadkesharanmatrixcomsec/iva-workflow:camera-service-api
+        image: phadkesharanmatrixcomsec/iva-workflow:camera-service-api-1.0
         ports:
         - containerPort: 8080
         env:

@@ -10,8 +10,11 @@ public class WebAPIService
     public WebAPIService(IConfiguration configuration)
     {
         _httpClient = new HttpClient();
+
+        Console.WriteLine($"environment variable {configuration["VehicleManagementService:BaseUrl"]}");
+
         VehicleManagementServiceUrl = 
-            configuration["VehicleManagementService:BaseUrl"]  ?? "http://localhost:5048"; 
+            configuration["VehicleManagementService:BaseUrl"]  ?? "http://localhost:5003"; 
     }
 
     public async Task<string> ValidateNumberPlateAPICall(string numberPlate)
