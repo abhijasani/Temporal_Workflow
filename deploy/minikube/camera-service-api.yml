@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: camera-service-api-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: camera-service-api
+  template:
+    metadata:
+      labels:
+        app: camera-service-api
+    spec:
+      containers:
+      - name: camera-service-api
+        image: phadkesharanmatrixcomsec/iva-workflow:camera-service-api
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Production"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: camera-service-api-service
+spec:
+  selector:
+    app: camera-service-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
+

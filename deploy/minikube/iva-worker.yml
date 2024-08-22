@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iva-worker-deployment
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: iva-worker
+  template:
+    metadata:
+      labels:
+        app: iva-worker
+    spec:
+      containers:
+      - name: iva-worker
+        image: phadkesharanmatrixcomsec/iva-workflow:iva-worker
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Production"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: iva-worker-service
+spec:
+  selector:
+    app: iva-worker
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
+
