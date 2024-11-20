@@ -13,8 +13,8 @@ public class NumberPlateRecognitionService : IAnalytics
         var random = new Random();
         while (!_cancellationTokenSource.IsCancellationRequested)
         {
-            await Task.Delay(random.Next(10000, 30000), cancellationToken);
-
+          //  await Task.Delay(random.Next(10000, 30000), cancellationToken);
+            await Task.Delay(2000, cancellationToken);
             var numberPlate = GenerateRandomNumberPlate(random);
 
             yield return numberPlate;
